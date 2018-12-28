@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import Restaurant from "./src/screen/Restaurant";
 
 
+export default class App extends React.Component{
 
-export default class App extends React.Component {
   render() {
     return <Restaurant />;
   }

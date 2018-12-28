@@ -33,20 +33,18 @@ export default class Card extends Component<Props, State> {
   render() {
     const { favorite } = this.state;
     return (
-      <TouchableOpacity onPress={()=>Alert.alert("ini Touchable")}>
-        <View
-          style={[
-            styles.container,
-            { backgroundColor: favorite ? "red" : "blue" }
-          ]}
-        >
-          <Text>{this.props.title}</Text>
-          <Button
-            title={favorite ? "Hapus dari Favorit" : "Jadikan Favorit"}
-            onPress={() => this.handleClick()}
-          />
-        </View>
-      </TouchableOpacity>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: favorite ? "red" : "blue" }
+        ]}
+      >
+        <Text>{this.props.title}</Text>
+        <Button
+          title={favorite ? "Hapus dari Favorit" : "Jadikan Favorit"}
+          onPress={() => this.handleClick()}
+        />
+      </View>
     );
   }
 }

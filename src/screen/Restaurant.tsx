@@ -10,11 +10,16 @@ import {
 } from "react-native";
 import Card from "../component/Card";
 import Input from "../component/Input";
-import { array } from "prop-types";
+import DetailRestaurant from "./DetailRestaurant";
 
 interface RestaurantModel {
   id: string;
   name: string;
+}
+
+interface Props {}
+interface State {
+  screen: string;
 }
 
 const restaurants: RestaurantModel[] = [
@@ -48,19 +53,32 @@ const restaurants: RestaurantModel[] = [
   }
 ];
 
-export default class Restaurant extends Component {
+export default class Restaurant extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      screen: "detail"
+    };
+  }
+
+ 
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Input />
-        <Text style={styles.title}>Daftar Restaurant</Text>
-        <ScrollView>
-          {restaurants.map((r, index) => (
-            <Card title={r.name} key={index} />
-          ))}
-        </ScrollView>
-      </View>
-    );
+    const { screen } = this.state;
+    if (screen == "list") {
+      return (
+        <View style={styles.container}>
+          <Input />
+          <Text style={styles.title}>Daftar Restaurant</Text>
+          <ScrollView>
+            {restaurants.map((r, index) => (
+              <Card title={r.name} key={index} />
+            ))}
+          </ScrollView>
+        </View>
+      )
+    }
+    return <DetailRestaurant />
   }
 }
 
