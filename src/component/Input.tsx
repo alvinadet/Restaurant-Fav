@@ -7,6 +7,8 @@ interface State {
 }
 
 interface Props{
+    query : string
+    handleChange : object
 
 }
 
@@ -22,11 +24,10 @@ export default class Input extends Component<Props,State>{
 
     render(){
         const {cari}= this.state
+  
         return(
             <View>
-                <TextInput placeholder="Ketik disini" value={cari} onChangeText={(r)=>this.setState({
-                    cari : r
-                })} />
+                <TextInput placeholder="Ketik disini" value={this.props.query}  onChangeText={this.props.handleChange} />
                 <Text>{cari ? cari : "ketik dulu"}</Text>
             </View>
         )
